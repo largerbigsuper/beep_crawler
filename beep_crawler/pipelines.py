@@ -10,13 +10,18 @@ import datetime
 import logging
 
 import pymysql
+import environ
+
+
+env = environ.Env()
+env.read_env('.env')
 
 DB_CONFIG = {
-    'host': '127.0.0.1',
-    'user': 'root',
-    'password': 'Password123/',
-    'db': 'beep_db_local',
-    'port': 3306,
+    'host': env('DB_HOST'),
+    'user': env('DB_USER'),
+    'password': env('DB_PASSWORD'),
+    'db': env('DB_NAME'),
+    'port': env('DB_PORT'),
     'charset': 'utf8mb4',
 }
 
