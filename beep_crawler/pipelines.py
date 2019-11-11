@@ -10,10 +10,10 @@ import datetime
 import logging
 
 import pymysql
-import environ
+import environs
 
 
-env = environ.Env()
+env = environs.Env()
 env.read_env('.env')
 
 DB_CONFIG = {
@@ -21,10 +21,9 @@ DB_CONFIG = {
     'user': env('DB_USER'),
     'password': env('DB_PASSWORD'),
     'db': env('DB_NAME'),
-    'port': env('DB_PORT'),
+    'port': env.int('DB_PORT'),
     'charset': 'utf8mb4',
 }
-
 
 class BeepCrawlerPipeline(object):
 
