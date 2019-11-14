@@ -47,9 +47,9 @@ class BeepCrawlerPipeline(object):
             
         with self.db.cursor() as cursor:
             sql = """INSERT INTO crawled_document 
-            (title, content, source, link, published_at, crawled_at, site_name, md5_content) 
+            (title, content, source, link, published_at, crawled_at, site_name, md5_content, is_news) 
             VALUES 
-            ("{title}", "{content}", "{source}", "{link}", "{published_at}", "{crawled_at}", "{site_name}", "{md5_content}");
+            ("{title}", "{content}", "{source}", "{link}", "{published_at}", "{crawled_at}", "{site_name}", "{md5_content}", "1");
             """.format(**item)
             self.logger.info(sql)
 
