@@ -6,6 +6,7 @@ cd /root/beep_crawler
 # pyenv activate beep_crawler && 
 
 scrapy crawl bishijie  -s JOBDIR=jobs/bishijie-1
+scrapy crawl jinse  -s JOBDIR=jobs/jinse-1
 
 # 币世界
 
