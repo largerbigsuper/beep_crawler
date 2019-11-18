@@ -11,7 +11,7 @@ from beep_crawler.items import BeepCrawlerItem
 class BishijieSpider(scrapy.Spider):
     name = 'bishijie'
     domain = 'https://www.bishijie.com'
-    allowed_domains = [domain]
+    allowed_domains = ['bishijie.com']
     start_urls = [domain]
 
 
