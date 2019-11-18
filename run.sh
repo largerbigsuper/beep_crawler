@@ -10,5 +10,6 @@ pyenv activate beep_crawler && scrapy crawl bishijie  -s JOBDIR=jobs/bishijie-1
 pyenv activate beep_crawler && scrapy crawl jinse  -s JOBDIR=jobs/jinse-1
 pyenv activate beep_crawler && scrapy crawl odaily  -s JOBDIR=jobs/odaily-1
 pyenv activate beep_crawler && scrapy crawl shenliancaijing  -s JOBDIR=jobs/shenliancaijing-1
+pyenv activate beep_crawler && scrapy crawl chainnews  -s JOBDIR=jobs/chainnews-1
 
 # 币世界
