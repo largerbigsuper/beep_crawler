@@ -13,7 +13,7 @@ class BishijieSpider(scrapy.Spider):
     allowed_domains = ['https://www.bishijie.com']
     api_tpl = 'https://www.bishijie.com/api/newsv17/index?size={size}&client=pc&timestamp={from_timestamp}'
     size = 100
-    from_timestamp = int(time.mktime(datetime.now().date().timetuple()))
+    from_timestamp = int(time.mktime(datetime.now().timetuple()))
     start_url = api_tpl.format(size=size, from_timestamp=from_timestamp)
     start_urls = [start_url]
 
@@ -38,7 +38,7 @@ class BishijieSpider(scrapy.Spider):
                 item['crawled_at'] = crawled_at
                 item['site_name'] = site_name
                 item['md5_content'] = hashlib.md5(news['content'].encode('utf8')).hexdigest()
-                print(item)
+                # print(item)
                 yield item
 
 
