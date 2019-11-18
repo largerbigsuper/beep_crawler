@@ -22,7 +22,7 @@ class ChainnewsSpider(scrapy.Spider):
         crawled_at = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         news_list = []
         div_list = response.xpath('//div[@class="feed-item-content"]')
-        print(div_list)
+        # print(div_list)
         for news in div_list:
                 item = BeepCrawlerItem()
                 item['title'] = self._get_title(news)
