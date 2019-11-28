@@ -54,6 +54,9 @@ class BeepCrawlerPipeline(object):
             self.logger.info(sql)
 
             cursor.execute(sql)
-        self.db.commit()
+            self.db.commit()
 
         return item
+
+    def __del__(self):
+        self.db.close()
