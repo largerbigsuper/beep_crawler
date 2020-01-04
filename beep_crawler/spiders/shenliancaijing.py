@@ -46,7 +46,7 @@ class ShenliancaijingSpider(scrapy.Spider):
             item['site_name'] = site_name
             item['md5_content'] = hashlib.md5(item['link'].encode('utf8')).hexdigest()
             print(item)
-            # yield item
+            yield item
 
     def _get_link_detail(self, news):
         link_detail = self.domain + '/a/' + str(news['id']) + '.html'
