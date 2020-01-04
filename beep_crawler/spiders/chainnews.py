@@ -10,6 +10,7 @@ from beep_crawler.items import BeepCrawlerItem
 
 class ChainnewsSpider(scrapy.Spider):
     name = 'chainnews'
+    domain = 'https://www.chainnews.com'
     allowed_domains = ['chainnews.com']
     start_urls = ['https://www.chainnews.com/news/']
     custom_settings = {
@@ -28,11 +29,11 @@ class ChainnewsSpider(scrapy.Spider):
                 item['title'] = self._get_title(news)
                 item['content'] = self._get_content(news)
                 item['source'] = ''
-                item['link'] = ''
+                item['link'] = self._get_link_detail(news)
                 item['published_at'] = crawled_at
                 item['crawled_at'] = crawled_at
                 item['site_name'] = site_name
-                item['md5_content'] = hashlib.md5(item['content'].encode('utf8')).hexdigest()
+                item['md5_content'] = hashlib.md5(item['link'].encode('utf8')).hexdigest()
                 # print(item)
                 yield item
 
@@ -43,3 +44,7 @@ class ChainnewsSpider(scrapy.Spider):
     def _get_content(self, news):
         content = news.xpath('.//div[@class="feed-post-summary"]/text()').extract_first().strip() 
         return content
+
+    def _get_link_detail(self, news):
+        link_detail = news.xpath('.//h2/a/@href').extract_first().strip()
+        return self.domain + link_detail

@@ -10,6 +10,7 @@ from beep_crawler.items import BeepCrawlerItem
 
 class OdailySpider(scrapy.Spider):
     name = 'odaily'
+    domain = 'https://www.odaily.com'
     allowed_domains = ['odaily.com']
     start_urls = ['https://www.odaily.com/api/pp/api/info-flow/newsflash_columns/newsflashes?b_id=&per_page=20']
 
@@ -24,11 +25,15 @@ class OdailySpider(scrapy.Spider):
             item['title'] = news['title']
             item['content'] = news['description']
             item['source'] = ''
-            item['link'] = news['news_url']
+            item['link'] = self._get_link_detail(news)
             item['published_at'] = news['published_at']
             item['crawled_at'] = crawled_at
             item['site_name'] = site_name
-            item['md5_content'] = hashlib.md5(item['content'].encode('utf8')).hexdigest()
+            item['md5_content'] = hashlib.md5(item['link'].encode('utf8')).hexdigest()
             # print(item)
             yield item
 
+    def _get_link_detail(self, news):
+        link_detail = self.domain + '/newsflash/' + str(news['id'])
+        return link_detail
+        
