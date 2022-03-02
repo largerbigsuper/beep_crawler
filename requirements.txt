@@ -1,6 +1,6 @@
 lxml==4.4.1
 PyMySQL==0.9.3
-Scrapy==1.8.0
+Scrapy==1.8.2
 scrapyd==1.2.1
 scrapyd-client==1.1.0
 environs==6.1.0
